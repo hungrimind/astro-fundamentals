@@ -1,16 +1,45 @@
 ---
+import github from "../assets/github.svg";
+import x from "../assets/x.svg";
+import youtube from "../assets/youtube.svg";
 
+import { SOCIALS } from "../config";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <p class="text-lg pt-20 text-neutral-500">Hi, I'm Tadas Petra.</p>
+
+  <p class="text-lg pt-4 text-neutral-500">
+    I built <a
+      class="text-black font-bold decoration-wavy underline-offset-4 hover:underline"
+      href="https://www.hungrimind.com/">hungrimind.com</a
+    >, a community for people building projects. I'm also a Developer Relations
+    Manager at Agora, a Google Developer Expert for Flutter and Dart, and a
+    content creator.
+  </p>
+  <div class="flex pt-16 items-center">
+    <p class="text-neutral-500 text-lg">Find me on:</p>
+
+    <a class="ml-4" href={SOCIALS.x} target="_blank">
+      <img
+        class="w-6 h- 6 hover:scale-125 hover:rotate-6 transition"
+        src={x.src}
+      />
+    </a>
+    <a class="ml-4" href={SOCIALS.youtube} target="_blank"
+      ><img
+        class="w-8 h-8 hover:scale-125 hover:rotate-6 transition"
+        src={youtube.src}
+      /></a
+    >
+    <a class="ml-4" href={SOCIALS.github} target="_blank"
+      ><img
+        class="w-7 h-7 hover:scale-125 hover:rotate-6 transition"
+        src={github.src}
+      /></a
+    >
+  </div>
+  <h2 class="text-2xl font-bold pt-16">Latest Posts</h2>
+  <p>Coming soon...</p>
+</BaseLayout>
