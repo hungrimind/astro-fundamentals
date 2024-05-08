@@ -3,20 +3,15 @@ import github from "../assets/github.svg";
 import x from "../assets/x.svg";
 import youtube from "../assets/youtube.svg";
 
-import { SOCIALS } from "../config";
+import { SITE, SOCIALS } from "../config";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <p class="text-lg pt-20 text-neutral-500">Hi, I'm Tadas Petra.</p>
+  <p class="text-lg pt-20 text-neutral-500">Hi, I'm {SITE.name}.</p>
 
   <p class="text-lg pt-4 text-neutral-500">
-    I built <a
-      class="text-black font-bold decoration-wavy underline-offset-4 hover:underline"
-      href="https://www.hungrimind.com/">hungrimind.com</a
-    >, a community for people building projects. I'm also a Developer Relations
-    Manager at Agora, a Google Developer Expert for Flutter and Dart, and a
-    content creator.
+    {SITE.bio}
   </p>
   <div class="flex pt-16 items-center">
     <p class="text-neutral-500 text-lg">Find me on:</p>
