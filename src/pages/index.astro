@@ -1,10 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import github from "../assets/github.svg";
 import x from "../assets/x.svg";
 import youtube from "../assets/youtube.svg";
 
+import ArticleCard from "../components/ArticleCard.astro";
 import { SITE, SOCIALS } from "../config";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allArticles = await getCollection("articles");
+const sortedArticles = allArticles.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const newestArticles = sortedArticles.slice(0, 3);
 ---
 
 <BaseLayout>
@@ -14,11 +22,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     {SITE.bio}
   </p>
   <div class="flex pt-16 items-center">
-    <p class="text-neutral-500 text-lg">Find me on:</p>
+    <p class="text-neutral-500 text-lg pt-1">Find me on:</p>
 
     <a class="ml-4" href={SOCIALS.x} target="_blank">
       <img
-        class="w-6 h- 6 hover:scale-125 hover:rotate-6 transition"
+        class="w-6 h-6 hover:scale-125 hover:rotate-6 transition"
         src={x.src}
       />
     </a>
@@ -35,6 +43,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       /></a
     >
   </div>
-  <h2 class="text-2xl font-bold pt-16">Latest Posts</h2>
-  <p>Coming soon...</p>
+  <h1 class="pt-16">Latest Posts</h1>
+  {newestArticles.map((article) => <ArticleCard article={article} />)}
 </BaseLayout>

@@ -1,0 +1,22 @@
+---
+const { article } = Astro.props;
+---
+
+<div class="flex flex-col mb-2">
+  <a
+    href={"/articles/" + article.slug}
+    class="rounded-lg p-4 hover:bg-gray-100"
+  >
+    <h2 class="font-semibold">{article.data.title}</h2>
+    <p class="text-gray-600">{article.data.description}</p>
+    <time class="text-sm text-gray-500" datetime={article.data.date}>
+      Published on: {
+        article.data.date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        })
+      }
+    </time>
+  </a>
+</div>
