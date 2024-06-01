@@ -1,15 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { article, views } = Astro.props;
+const { article } = Astro.props;
 ---
 
 <BaseLayout>
   <h1 class="mt-16">{article.data.title}</h1>
   <p class="mb-16 text-gray-600 text-lg">{article.data.description}</p>
-
   <article>
     <slot />
   </article>
-  <p class="mt-16 text-gray-400 text-lg">{views} views</p>
 </BaseLayout>
