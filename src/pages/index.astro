@@ -13,10 +13,18 @@ const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 const newestArticles = sortedArticles.slice(0, 3);
+
+const currentTime = new Date();
+console.log(currentTime);
+const hour = currentTime.getHours();
+console.log(hour);
+const greeting =
+  hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 ---
 
 <BaseLayout>
-  <p class="text-lg pt-20 text-neutral-500">Hi, I'm {SITE.name}.</p>
+  <p>{currentTime}</p>
+  <p class="text-lg pt-20 text-neutral-500">{greeting}, I'm {SITE.name}.</p>
 
   <p class="text-lg pt-4 text-neutral-500">
     {SITE.bio}
