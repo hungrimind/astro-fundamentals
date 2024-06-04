@@ -4,6 +4,7 @@ import github from "../assets/github.svg";
 import x from "../assets/x.svg";
 import youtube from "../assets/youtube.svg";
 
+import { Image } from "astro:assets";
 import ArticleCard from "../components/ArticleCard.astro";
 import { SITE, SOCIALS } from "../config";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -33,21 +34,24 @@ const greeting =
     <p class="text-neutral-500 text-lg pt-1">Find me on:</p>
 
     <a class="ml-4" href={SOCIALS.x} target="_blank">
-      <img
+      <Image
         class="w-6 h-6 hover:scale-125 hover:rotate-6 transition"
-        src={x.src}
+        src={x}
+        alt="X"
       />
     </a>
     <a class="ml-4" href={SOCIALS.youtube} target="_blank"
-      ><img
+      ><Image
         class="w-8 h-8 hover:scale-125 hover:rotate-6 transition"
-        src={youtube.src}
+        src={youtube}
+        alt="Youtube"
       /></a
     >
     <a class="ml-4" href={SOCIALS.github} target="_blank"
-      ><img
+      ><Image
         class="w-7 h-7 hover:scale-125 hover:rotate-6 transition"
-        src={github.src}
+        src={github}
+        alt="Github"
       /></a
     >
   </div>

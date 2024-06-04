@@ -22,7 +22,6 @@ try {
     .set({ views: viewEntry[0].views + 1 })
     .where(eq(Views.slug, entry.slug));
 } catch (error) {
-  console.log(error);
   await db.insert(Views).values({ slug: entry.slug, views: 1 });
   viewEntry = await db.select().from(Views).where(eq(Views.slug, entry.slug));
   console.log(viewEntry);
