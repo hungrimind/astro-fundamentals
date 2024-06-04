@@ -2,6 +2,15 @@
 import { Image } from "astro:assets";
 
 const { article } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}"
+);
+const image = images[article.data.image]();
+if (!image)
+  throw new Error(
+    `"${article.data.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
 ---
 
 <div class="flex flex-col mb-2">
@@ -10,11 +19,9 @@ const { article } = Astro.props;
     class="rounded-lg p-4 hover:bg-gray-100 flex"
   >
     <Image
-      class="w-1/4 mr-4 rounded hidden md:block"
-      src={article.data.image}
+      class="w-1/4 mr-4 rounded hidden sm:block"
+      src={image}
       alt={article.data.alt}
-      width={200}
-      height={200}
     />
     <div>
       <h2 class="font-semibold">{article.data.title}</h2>
