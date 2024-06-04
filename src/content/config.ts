@@ -6,7 +6,7 @@ const articles = defineCollection({
         title: z.string(),
         description: z.string(),
         date: z.date(),
-        image: z.string().default("/src/assets/one.jpg"),
+        image: z.string().default("/src/assets/one.png"),
         alt: z.string().default("add your default alt text here"),
     }),
 });

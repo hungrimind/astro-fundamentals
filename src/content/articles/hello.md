@@ -6,7 +6,7 @@ date: 2024-05-08
 
 Hello, this is my **first markdown**, and I will be writing a lot of articles in here now that I have this pretty template.
 
-![Third Image](../../assets/three.jpg)
+![Third Image](../../assets/three.png)
 
 ## This is a H2 heading
 But I also have access to all sorts of markdown features like *italics*, ~strikethrough~, lists, `inline code`, and code blocks.
