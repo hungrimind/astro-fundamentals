@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import { Views, db, eq } from "astro:db";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 
 export async function getStaticPaths() {
@@ -12,8 +13,21 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const entry = await getEntry("articles", slug);
 const { Content } = await entry.render();
+
+let viewEntry;
+try {
+  viewEntry = await db.select().from(Views).where(eq(Views.slug, entry.slug));
+  await db
+    .update(Views)
+    .set({ views: viewEntry[0].views + 1 })
+    .where(eq(Views.slug, entry.slug));
+} catch (error) {
+  await db.insert(Views).values({ slug: entry.slug, views: 1 });
+  viewEntry = await db.select().from(Views).where(eq(Views.slug, entry.slug));
+  console.log(viewEntry);
+}
 ---
 
-<ArticleLayout article={entry}>
+<ArticleLayout article={entry} views={viewEntry[0].views}>
   <Content />
 </ArticleLayout>
